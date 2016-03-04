@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<catalog xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog" prefer="system">
+    <system systemId="http://docs.gijon.es/sw/busgijon.asmx?WSDL" uri="xml-resources/web-service-references/busgijon/wsdl/docs.gijon.es/sw/busgijon.asmx.wsdl"/>
+</catalog>

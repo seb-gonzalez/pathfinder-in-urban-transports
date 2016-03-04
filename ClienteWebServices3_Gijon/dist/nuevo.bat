@@ -1,0 +1,1 @@
+echo "hola esto esta de puta madre" > archivo.txt

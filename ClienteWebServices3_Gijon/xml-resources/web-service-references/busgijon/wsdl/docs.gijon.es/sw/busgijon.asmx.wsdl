@@ -1,0 +1,1132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://docs.gijon.es/sw/busgijon.asmx" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" targetNamespace="http://docs.gijon.es/sw/busgijon.asmx" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://docs.gijon.es/sw/busgijon.asmx">
+      <s:element name="Paradas">
+        <s:complexType />
+      </s:element>
+      <s:element name="ParadasResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="paradas" type="tns:ParadasBus" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ParadasBus">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="parada" type="tns:ParadaBus" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ParadaBus">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="idparada" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="descripcion" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="utmx" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="utmy" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="ParadasTrayectos">
+        <s:complexType />
+      </s:element>
+      <s:element name="ParadasTrayectosResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="paradastrayecto" type="tns:ParadasTrayectosBus" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ParadasTrayectosBus">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="parada" type="tns:ParadaTrayectoBus" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ParadaTrayectoBus">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="idparada" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="idlinea" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="idtrayecto" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="orden" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="descripcion" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="utmx" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="utmy" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="Horarios">
+        <s:complexType />
+      </s:element>
+      <s:element name="HorariosResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="horarios" type="tns:HorariosBus" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="HorariosBus">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="horario" type="tns:HoraBus" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="HoraBus">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="fechainicio" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="fechafin" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="hora" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="idlinea" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="idtrayecto" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="numeroexpedicion" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="Lineas">
+        <s:complexType />
+      </s:element>
+      <s:element name="LineasResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="lineas" type="tns:LineasBus" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="LineasBus">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="linea" type="tns:LineaBus" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="LineaBus">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="idlinea" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="descripcion" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="tipo" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="codigo" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="colorHex" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="LlegadasParadas">
+        <s:complexType />
+      </s:element>
+      <s:element name="LlegadasParadasResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="llegadas" type="tns:LlegadasBus" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="LlegadasBus">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="llegada" type="tns:LlegadaBus" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="LlegadaBus">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="idautobus" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="matricula" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="modelo" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="idlinea" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="idtrayecto" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="idparada" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="minutos" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="distancia" type="s:double" />
+          <s:element minOccurs="0" maxOccurs="1" name="horaactualizacion" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="fechaactualizacion" type="s:dateTime" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="Posiciones">
+        <s:complexType />
+      </s:element>
+      <s:element name="PosicionesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="posiciones" type="tns:PosicionesBus" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="PosicionesBus">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="posicion" type="tns:PosicionBus" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="PosicionBus">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="idautobus" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="matricula" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="modelo" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="idlinea" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="idtrayecto" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="idparada" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="ordenparada" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="utmx" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="utmy" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="horaactualizacion" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="fechaactualizacion" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="idsiguienteparada" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="minutos" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="distancia" type="s:double" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="Trayectos">
+        <s:complexType />
+      </s:element>
+      <s:element name="TrayectosResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="trayectos" type="tns:TrayectosBus" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="TrayectosBus">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="trayecto" type="tns:TrayectoBus" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="TrayectoBus">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="idtrayecto" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="idlinea" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="descripcion" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="idcabecera" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="direccion" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="destino" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="estadoParada">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="piIdParada" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="estadoParadaResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="autobuses" type="tns:EstadoParadaBus" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="EstadoParadaBus">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="autobus" type="tns:AutobusBus" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="AutobusBus">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="idautobus" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="idlinea" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="idtrayecto" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="minutos" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="distancia" type="s:double" />
+          <s:element minOccurs="1" maxOccurs="1" name="utmx" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="utmy" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="horaactualizacion" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="fechaactualizacion" type="s:dateTime" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="estadoBus">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="psIdBus" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="estadoBusResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="autobus" type="tns:EstadoAutobusBus" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="EstadoAutobusBus">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="idautobus" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="utmx" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="utmy" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="horaactualizacion" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="fechaactualizacion" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="paradas" type="tns:ArrayOfEstadoParadasBus" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfEstadoParadasBus">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="parada" nillable="true" type="tns:EstadoParadasBus" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="EstadoParadasBus">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="idparada" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="idlinea" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="idtrayecto" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="minutos" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="distancia" type="s:double" />
+          <s:element minOccurs="0" maxOccurs="1" name="horaactualizacion" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="fechaactualizacion" type="s:dateTime" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="estadoLinea">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="piIdLinea" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="estadoLineaResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="linea" type="tns:EstadoLineaBus" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="EstadoLineaBus">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="trayectos" type="tns:ArrayOfTrayectoLineaBus" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfTrayectoLineaBus">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="trayecto" type="tns:TrayectoLineaBus" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="TrayectoLineaBus">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="idtrayecto" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="autobuses" type="tns:ArrayOfAutobusTrayectoBus" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfAutobusTrayectoBus">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="autobus" type="tns:AutobusTrayectoBus" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="AutobusTrayectoBus">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="idautobus" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="paradas" type="tns:ArrayOfParadaAutobusTrayectoBus" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfParadaAutobusTrayectoBus">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="parada" type="tns:ParadaAutobusTrayectoBus" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ParadaAutobusTrayectoBus">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="idparada" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="minutos" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="distancia" type="s:double" />
+          <s:element minOccurs="0" maxOccurs="1" name="horaactualizacion" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="fechaactualizacion" type="s:dateTime" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="vialesTrayecto">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="piIdLinea" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="piIdTrayecto" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="vialesTrayectoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="vialestrayectolinea" type="tns:VialesTrayectoBus" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="VialesTrayectoBus">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="linea" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="trayecto" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="ruta" type="tns:ArrayOfCoordenada" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfCoordenada">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="coordenada" nillable="true" type="tns:Coordenada" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Coordenada">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="x" type="s:long" />
+          <s:element minOccurs="1" maxOccurs="1" name="y" type="s:long" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="infoParadas">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="psIdParada" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="infoParadasResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="infoparadas" type="tns:InfoParadasBus" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="InfoParadasBus">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="infos" type="tns:ArrayOfInfoParada" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfInfoParada">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="infoparada" nillable="true" type="tns:InfoParada" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="InfoParada">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="id_parada" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="texto">
+            <s:complexType mixed="true">
+              <s:sequence>
+                <s:any />
+              </s:sequence>
+            </s:complexType>
+          </s:element>
+        </s:sequence>
+      </s:complexType>
+      <s:element name="salidasCabeceras">
+        <s:complexType />
+      </s:element>
+      <s:element name="salidasCabecerasResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="salidascabeberas" type="tns:SalidasCabecerasBus" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="SalidasCabecerasBus">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="salidas" type="tns:ArrayOfSalida" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfSalida">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="salida" nillable="true" type="tns:Salida" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Salida">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="dtfechainicio" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="dtfechafin" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="iidlinea" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="iidtrayecto" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="iordenenuhs" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="dthorainicio" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="inumeroexpedicion" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="iordenentrayecto" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="iidparada" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="parada" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="estadoCabeceraSalidas">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="piIdParada" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="psFechaHora" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="estadoCabeceraSalidasResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="salidadeautobuses" type="tns:EstadoParadaSalidaBus" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="EstadoParadaSalidaBus">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="salida" type="tns:AutobusSalidaBus" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="AutobusSalidaBus">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="idlinea" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="idtrayecto" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="minutos" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="hora" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="paradas" type="tns:ParadasBus" />
+      <s:element name="paradastrayecto" type="tns:ParadasTrayectosBus" />
+      <s:element name="horarios" type="tns:HorariosBus" />
+      <s:element name="lineas" type="tns:LineasBus" />
+      <s:element name="llegadas" type="tns:LlegadasBus" />
+      <s:element name="posiciones" type="tns:PosicionesBus" />
+      <s:element name="trayectos" type="tns:TrayectosBus" />
+      <s:element name="autobuses" type="tns:EstadoParadaBus" />
+      <s:element name="autobus" type="tns:EstadoAutobusBus" />
+      <s:element name="linea" type="tns:EstadoLineaBus" />
+      <s:element name="vialestrayectolinea" type="tns:VialesTrayectoBus" />
+      <s:element name="infoparadas" type="tns:InfoParadasBus" />
+      <s:element name="salidascabeberas" type="tns:SalidasCabecerasBus" />
+      <s:element name="salidadeautobuses" type="tns:EstadoParadaSalidaBus" />
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="ParadasSoapIn">
+    <wsdl:part name="parameters" element="tns:Paradas" />
+  </wsdl:message>
+  <wsdl:message name="ParadasSoapOut">
+    <wsdl:part name="parameters" element="tns:ParadasResponse" />
+  </wsdl:message>
+  <wsdl:message name="ParadasTrayectosSoapIn">
+    <wsdl:part name="parameters" element="tns:ParadasTrayectos" />
+  </wsdl:message>
+  <wsdl:message name="ParadasTrayectosSoapOut">
+    <wsdl:part name="parameters" element="tns:ParadasTrayectosResponse" />
+  </wsdl:message>
+  <wsdl:message name="HorariosSoapIn">
+    <wsdl:part name="parameters" element="tns:Horarios" />
+  </wsdl:message>
+  <wsdl:message name="HorariosSoapOut">
+    <wsdl:part name="parameters" element="tns:HorariosResponse" />
+  </wsdl:message>
+  <wsdl:message name="LineasSoapIn">
+    <wsdl:part name="parameters" element="tns:Lineas" />
+  </wsdl:message>
+  <wsdl:message name="LineasSoapOut">
+    <wsdl:part name="parameters" element="tns:LineasResponse" />
+  </wsdl:message>
+  <wsdl:message name="LlegadasParadasSoapIn">
+    <wsdl:part name="parameters" element="tns:LlegadasParadas" />
+  </wsdl:message>
+  <wsdl:message name="LlegadasParadasSoapOut">
+    <wsdl:part name="parameters" element="tns:LlegadasParadasResponse" />
+  </wsdl:message>
+  <wsdl:message name="PosicionesSoapIn">
+    <wsdl:part name="parameters" element="tns:Posiciones" />
+  </wsdl:message>
+  <wsdl:message name="PosicionesSoapOut">
+    <wsdl:part name="parameters" element="tns:PosicionesResponse" />
+  </wsdl:message>
+  <wsdl:message name="TrayectosSoapIn">
+    <wsdl:part name="parameters" element="tns:Trayectos" />
+  </wsdl:message>
+  <wsdl:message name="TrayectosSoapOut">
+    <wsdl:part name="parameters" element="tns:TrayectosResponse" />
+  </wsdl:message>
+  <wsdl:message name="estadoParadaSoapIn">
+    <wsdl:part name="parameters" element="tns:estadoParada" />
+  </wsdl:message>
+  <wsdl:message name="estadoParadaSoapOut">
+    <wsdl:part name="parameters" element="tns:estadoParadaResponse" />
+  </wsdl:message>
+  <wsdl:message name="estadoBusSoapIn">
+    <wsdl:part name="parameters" element="tns:estadoBus" />
+  </wsdl:message>
+  <wsdl:message name="estadoBusSoapOut">
+    <wsdl:part name="parameters" element="tns:estadoBusResponse" />
+  </wsdl:message>
+  <wsdl:message name="estadoLineaSoapIn">
+    <wsdl:part name="parameters" element="tns:estadoLinea" />
+  </wsdl:message>
+  <wsdl:message name="estadoLineaSoapOut">
+    <wsdl:part name="parameters" element="tns:estadoLineaResponse" />
+  </wsdl:message>
+  <wsdl:message name="vialesTrayectoSoapIn">
+    <wsdl:part name="parameters" element="tns:vialesTrayecto" />
+  </wsdl:message>
+  <wsdl:message name="vialesTrayectoSoapOut">
+    <wsdl:part name="parameters" element="tns:vialesTrayectoResponse" />
+  </wsdl:message>
+  <wsdl:message name="infoParadasSoapIn">
+    <wsdl:part name="parameters" element="tns:infoParadas" />
+  </wsdl:message>
+  <wsdl:message name="infoParadasSoapOut">
+    <wsdl:part name="parameters" element="tns:infoParadasResponse" />
+  </wsdl:message>
+  <wsdl:message name="salidasCabecerasSoapIn">
+    <wsdl:part name="parameters" element="tns:salidasCabeceras" />
+  </wsdl:message>
+  <wsdl:message name="salidasCabecerasSoapOut">
+    <wsdl:part name="parameters" element="tns:salidasCabecerasResponse" />
+  </wsdl:message>
+  <wsdl:message name="estadoCabeceraSalidasSoapIn">
+    <wsdl:part name="parameters" element="tns:estadoCabeceraSalidas" />
+  </wsdl:message>
+  <wsdl:message name="estadoCabeceraSalidasSoapOut">
+    <wsdl:part name="parameters" element="tns:estadoCabeceraSalidasResponse" />
+  </wsdl:message>
+  <wsdl:message name="ParadasHttpGetIn" />
+  <wsdl:message name="ParadasHttpGetOut">
+    <wsdl:part name="Body" element="tns:paradas" />
+  </wsdl:message>
+  <wsdl:message name="ParadasTrayectosHttpGetIn" />
+  <wsdl:message name="ParadasTrayectosHttpGetOut">
+    <wsdl:part name="Body" element="tns:paradastrayecto" />
+  </wsdl:message>
+  <wsdl:message name="HorariosHttpGetIn" />
+  <wsdl:message name="HorariosHttpGetOut">
+    <wsdl:part name="Body" element="tns:horarios" />
+  </wsdl:message>
+  <wsdl:message name="LineasHttpGetIn" />
+  <wsdl:message name="LineasHttpGetOut">
+    <wsdl:part name="Body" element="tns:lineas" />
+  </wsdl:message>
+  <wsdl:message name="LlegadasParadasHttpGetIn" />
+  <wsdl:message name="LlegadasParadasHttpGetOut">
+    <wsdl:part name="Body" element="tns:llegadas" />
+  </wsdl:message>
+  <wsdl:message name="PosicionesHttpGetIn" />
+  <wsdl:message name="PosicionesHttpGetOut">
+    <wsdl:part name="Body" element="tns:posiciones" />
+  </wsdl:message>
+  <wsdl:message name="TrayectosHttpGetIn" />
+  <wsdl:message name="TrayectosHttpGetOut">
+    <wsdl:part name="Body" element="tns:trayectos" />
+  </wsdl:message>
+  <wsdl:message name="estadoParadaHttpGetIn">
+    <wsdl:part name="piIdParada" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="estadoParadaHttpGetOut">
+    <wsdl:part name="Body" element="tns:autobuses" />
+  </wsdl:message>
+  <wsdl:message name="estadoBusHttpGetIn">
+    <wsdl:part name="psIdBus" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="estadoBusHttpGetOut">
+    <wsdl:part name="Body" element="tns:autobus" />
+  </wsdl:message>
+  <wsdl:message name="estadoLineaHttpGetIn">
+    <wsdl:part name="piIdLinea" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="estadoLineaHttpGetOut">
+    <wsdl:part name="Body" element="tns:linea" />
+  </wsdl:message>
+  <wsdl:message name="vialesTrayectoHttpGetIn">
+    <wsdl:part name="piIdLinea" type="s:string" />
+    <wsdl:part name="piIdTrayecto" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="vialesTrayectoHttpGetOut">
+    <wsdl:part name="Body" element="tns:vialestrayectolinea" />
+  </wsdl:message>
+  <wsdl:message name="infoParadasHttpGetIn">
+    <wsdl:part name="psIdParada" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="infoParadasHttpGetOut">
+    <wsdl:part name="Body" element="tns:infoparadas" />
+  </wsdl:message>
+  <wsdl:message name="salidasCabecerasHttpGetIn" />
+  <wsdl:message name="salidasCabecerasHttpGetOut">
+    <wsdl:part name="Body" element="tns:salidascabeberas" />
+  </wsdl:message>
+  <wsdl:message name="estadoCabeceraSalidasHttpGetIn">
+    <wsdl:part name="piIdParada" type="s:string" />
+    <wsdl:part name="psFechaHora" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="estadoCabeceraSalidasHttpGetOut">
+    <wsdl:part name="Body" element="tns:salidadeautobuses" />
+  </wsdl:message>
+  <wsdl:portType name="busGijonSoap">
+    <wsdl:operation name="Paradas">
+      <wsdl:input message="tns:ParadasSoapIn" />
+      <wsdl:output message="tns:ParadasSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ParadasTrayectos">
+      <wsdl:input message="tns:ParadasTrayectosSoapIn" />
+      <wsdl:output message="tns:ParadasTrayectosSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Horarios">
+      <wsdl:input message="tns:HorariosSoapIn" />
+      <wsdl:output message="tns:HorariosSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Lineas">
+      <wsdl:input message="tns:LineasSoapIn" />
+      <wsdl:output message="tns:LineasSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="LlegadasParadas">
+      <wsdl:input message="tns:LlegadasParadasSoapIn" />
+      <wsdl:output message="tns:LlegadasParadasSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Posiciones">
+      <wsdl:input message="tns:PosicionesSoapIn" />
+      <wsdl:output message="tns:PosicionesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Trayectos">
+      <wsdl:input message="tns:TrayectosSoapIn" />
+      <wsdl:output message="tns:TrayectosSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="estadoParada">
+      <wsdl:input message="tns:estadoParadaSoapIn" />
+      <wsdl:output message="tns:estadoParadaSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="estadoBus">
+      <wsdl:input message="tns:estadoBusSoapIn" />
+      <wsdl:output message="tns:estadoBusSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="estadoLinea">
+      <wsdl:input message="tns:estadoLineaSoapIn" />
+      <wsdl:output message="tns:estadoLineaSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="vialesTrayecto">
+      <wsdl:input message="tns:vialesTrayectoSoapIn" />
+      <wsdl:output message="tns:vialesTrayectoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="infoParadas">
+      <wsdl:input message="tns:infoParadasSoapIn" />
+      <wsdl:output message="tns:infoParadasSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="salidasCabeceras">
+      <wsdl:input message="tns:salidasCabecerasSoapIn" />
+      <wsdl:output message="tns:salidasCabecerasSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="estadoCabeceraSalidas">
+      <wsdl:input message="tns:estadoCabeceraSalidasSoapIn" />
+      <wsdl:output message="tns:estadoCabeceraSalidasSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="busGijonHttpGet">
+    <wsdl:operation name="Paradas">
+      <wsdl:input message="tns:ParadasHttpGetIn" />
+      <wsdl:output message="tns:ParadasHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ParadasTrayectos">
+      <wsdl:input message="tns:ParadasTrayectosHttpGetIn" />
+      <wsdl:output message="tns:ParadasTrayectosHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Horarios">
+      <wsdl:input message="tns:HorariosHttpGetIn" />
+      <wsdl:output message="tns:HorariosHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Lineas">
+      <wsdl:input message="tns:LineasHttpGetIn" />
+      <wsdl:output message="tns:LineasHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="LlegadasParadas">
+      <wsdl:input message="tns:LlegadasParadasHttpGetIn" />
+      <wsdl:output message="tns:LlegadasParadasHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Posiciones">
+      <wsdl:input message="tns:PosicionesHttpGetIn" />
+      <wsdl:output message="tns:PosicionesHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Trayectos">
+      <wsdl:input message="tns:TrayectosHttpGetIn" />
+      <wsdl:output message="tns:TrayectosHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="estadoParada">
+      <wsdl:input message="tns:estadoParadaHttpGetIn" />
+      <wsdl:output message="tns:estadoParadaHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="estadoBus">
+      <wsdl:input message="tns:estadoBusHttpGetIn" />
+      <wsdl:output message="tns:estadoBusHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="estadoLinea">
+      <wsdl:input message="tns:estadoLineaHttpGetIn" />
+      <wsdl:output message="tns:estadoLineaHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="vialesTrayecto">
+      <wsdl:input message="tns:vialesTrayectoHttpGetIn" />
+      <wsdl:output message="tns:vialesTrayectoHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="infoParadas">
+      <wsdl:input message="tns:infoParadasHttpGetIn" />
+      <wsdl:output message="tns:infoParadasHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="salidasCabeceras">
+      <wsdl:input message="tns:salidasCabecerasHttpGetIn" />
+      <wsdl:output message="tns:salidasCabecerasHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="estadoCabeceraSalidas">
+      <wsdl:input message="tns:estadoCabeceraSalidasHttpGetIn" />
+      <wsdl:output message="tns:estadoCabeceraSalidasHttpGetOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="busGijonSoap" type="tns:busGijonSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="Paradas">
+      <soap:operation soapAction="http://docs.gijon.es/sw/busgijon.asmx/Paradas" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ParadasTrayectos">
+      <soap:operation soapAction="http://docs.gijon.es/sw/busgijon.asmx/ParadasTrayectos" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Horarios">
+      <soap:operation soapAction="http://docs.gijon.es/sw/busgijon.asmx/Horarios" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Lineas">
+      <soap:operation soapAction="http://docs.gijon.es/sw/busgijon.asmx/Lineas" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LlegadasParadas">
+      <soap:operation soapAction="http://docs.gijon.es/sw/busgijon.asmx/LlegadasParadas" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Posiciones">
+      <soap:operation soapAction="http://docs.gijon.es/sw/busgijon.asmx/Posiciones" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Trayectos">
+      <soap:operation soapAction="http://docs.gijon.es/sw/busgijon.asmx/Trayectos" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="estadoParada">
+      <soap:operation soapAction="http://docs.gijon.es/sw/busgijon.asmx/estadoParada" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="estadoBus">
+      <soap:operation soapAction="http://docs.gijon.es/sw/busgijon.asmx/estadoBus" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="estadoLinea">
+      <soap:operation soapAction="http://docs.gijon.es/sw/busgijon.asmx/estadoLinea" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="vialesTrayecto">
+      <soap:operation soapAction="http://docs.gijon.es/sw/busgijon.asmx/vialesTrayecto" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="infoParadas">
+      <soap:operation soapAction="http://docs.gijon.es/sw/busgijon.asmx/infoParadas" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="salidasCabeceras">
+      <soap:operation soapAction="http://docs.gijon.es/sw/busgijon.asmx/salidasCabeceras" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="estadoCabeceraSalidas">
+      <soap:operation soapAction="http://docs.gijon.es/sw/busgijon.asmx/estadoCabeceraSalidas" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="busGijonSoap12" type="tns:busGijonSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="Paradas">
+      <soap12:operation soapAction="http://docs.gijon.es/sw/busgijon.asmx/Paradas" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ParadasTrayectos">
+      <soap12:operation soapAction="http://docs.gijon.es/sw/busgijon.asmx/ParadasTrayectos" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Horarios">
+      <soap12:operation soapAction="http://docs.gijon.es/sw/busgijon.asmx/Horarios" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Lineas">
+      <soap12:operation soapAction="http://docs.gijon.es/sw/busgijon.asmx/Lineas" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LlegadasParadas">
+      <soap12:operation soapAction="http://docs.gijon.es/sw/busgijon.asmx/LlegadasParadas" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Posiciones">
+      <soap12:operation soapAction="http://docs.gijon.es/sw/busgijon.asmx/Posiciones" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Trayectos">
+      <soap12:operation soapAction="http://docs.gijon.es/sw/busgijon.asmx/Trayectos" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="estadoParada">
+      <soap12:operation soapAction="http://docs.gijon.es/sw/busgijon.asmx/estadoParada" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="estadoBus">
+      <soap12:operation soapAction="http://docs.gijon.es/sw/busgijon.asmx/estadoBus" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="estadoLinea">
+      <soap12:operation soapAction="http://docs.gijon.es/sw/busgijon.asmx/estadoLinea" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="vialesTrayecto">
+      <soap12:operation soapAction="http://docs.gijon.es/sw/busgijon.asmx/vialesTrayecto" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="infoParadas">
+      <soap12:operation soapAction="http://docs.gijon.es/sw/busgijon.asmx/infoParadas" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="salidasCabeceras">
+      <soap12:operation soapAction="http://docs.gijon.es/sw/busgijon.asmx/salidasCabeceras" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="estadoCabeceraSalidas">
+      <soap12:operation soapAction="http://docs.gijon.es/sw/busgijon.asmx/estadoCabeceraSalidas" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="busGijonHttpGet" type="tns:busGijonHttpGet">
+    <http:binding verb="GET" />
+    <wsdl:operation name="Paradas">
+      <http:operation location="/Paradas" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ParadasTrayectos">
+      <http:operation location="/ParadasTrayectos" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Horarios">
+      <http:operation location="/Horarios" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Lineas">
+      <http:operation location="/Lineas" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LlegadasParadas">
+      <http:operation location="/LlegadasParadas" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Posiciones">
+      <http:operation location="/Posiciones" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Trayectos">
+      <http:operation location="/Trayectos" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="estadoParada">
+      <http:operation location="/estadoParada" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="estadoBus">
+      <http:operation location="/estadoBus" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="estadoLinea">
+      <http:operation location="/estadoLinea" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="vialesTrayecto">
+      <http:operation location="/vialesTrayecto" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="infoParadas">
+      <http:operation location="/infoParadas" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="salidasCabeceras">
+      <http:operation location="/salidasCabeceras" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="estadoCabeceraSalidas">
+      <http:operation location="/estadoCabeceraSalidas" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="busGijon">
+    <wsdl:port name="busGijonSoap" binding="tns:busGijonSoap">
+      <soap:address location="http://docs.gijon.es/sw/busgijon.asmx" />
+    </wsdl:port>
+    <wsdl:port name="busGijonSoap12" binding="tns:busGijonSoap12">
+      <soap12:address location="http://docs.gijon.es/sw/busgijon.asmx" />
+    </wsdl:port>
+    <wsdl:port name="busGijonHttpGet" binding="tns:busGijonHttpGet">
+      <http:address location="http://docs.gijon.es/sw/busgijon.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
